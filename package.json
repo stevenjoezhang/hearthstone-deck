@@ -1,0 +1,23 @@
+{
+	"name": "hsdeck",
+	"version": "0.0.1",
+	"description": "Hearthstone Deck Parser",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/stevenjoezhang/hsdeck.git"
+	},
+	"keywords": [
+		"Hearthstone",
+		"Deck",
+		"Parser"
+	],
+	"author": "Mimi",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"express": "^4.16.4"
+	}
+}
