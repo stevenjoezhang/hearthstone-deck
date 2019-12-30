@@ -1,0 +1,25 @@
+{
+	"name": "hsdeck",
+	"version": "0.1.0",
+	"description": "Hearthstone Deck Parser.",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"postinstall": "nugget https://api.hearthstonejson.com/v1/latest/all/cards.collectible.json"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/stevenjoezhang/hsdeck.git"
+	},
+	"keywords": [
+		"Hearthstone",
+		"Deck",
+		"Parser"
+	],
+	"author": "Mimi <stevenjoezhang@gmail.com> https://zhangshuqiao.org",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"express": "^4.17.1",
+		"nugget": "^2.0.1"
+	}
+}

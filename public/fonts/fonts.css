@@ -1,0 +1,20 @@
+@font-face {
+	font-family: "GLEI00M_t";
+	src: url("GLEI00M_t.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'hs-bold';
+	src: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.eot");
+	src: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.eot?#iefix") format("embedded-opentype"), url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.woff2") format("woff2"), url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.woff") format("woff"), url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.ttf") format("truetype"), url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/hs-bold/belwe-bd-bt-bold-webfont.svg#belwe_bd_btbold") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'FZLiBian';
+	src: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.eot');
+	src: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.eot?#iefix') format('embedded-opentype'), url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.woff2') format('woff2'), url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.woff') format('woff'), url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.ttf') format('truetype'), url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.4/fonts/FZLBJW/FZLBJW--GB1-0.svg#FZLBJW--GB1-0') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
