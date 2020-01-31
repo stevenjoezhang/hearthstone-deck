@@ -102,11 +102,9 @@ function build_content(deck_cards_ordered, lang) {
 						(function() {
 							if (lang === "zhCN") {
 								let purify_name = card[2].name.enUS.replace(/\s|'|,|!|:|-/g, "");
-								return `<img src="http://hearthstone.nos.netease.com/1/hscards/${card[2].cardClass}__${card[2].id}_zhCN_${purify_name}.png">`;
+								//return `<img src="http://hearthstone.nos.netease.com/1/hscards/${card[2].cardClass}__${card[2].id}_zhCN_${purify_name}.png">`;
 							}
-							else {
-								return `<img src="https://art.hearthstonejson.com/v1/render/latest/${lang}/512x/${card[2].id}.png">`;
-							}
+							return `<img src="https://art.hearthstonejson.com/v1/render/latest/${lang}/512x/${card[2].id}.png">`;
 						})()
 					}
 				</div>

@@ -34,10 +34,10 @@ var port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
-	let code = req.query.code.replace(/\s/g, "+") || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
+	let code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
 		name = req.query.name || "炉石传说卡组",
 		lang = req.query.lang || "zhCN";
-	let ans = core(cards, code, name, lang);
+	let ans = core(cards, code.replace(/\s/g, "+"), name, lang);
 	res.end(ans.toString());
 });
 
