@@ -76,14 +76,14 @@ module.exports = function(db, deckstring, name, lang) {
 		return deck;
 	}
 	for (let card of deck.cards) {
-		let dbfId = card[0];
+		let [dbfId, count] = card;
 		row = db[dbfId];
-		deck_cards.push([...card, row]);
+		deck_cards.push([row, count]);
 	}
 	row = db[deck.heroes[0]];
 	let rarity_tags = ["FREE", "COMMON", "RARE", "EPIC", "LEGENDARY"];
 	deck_cards
-		.sort((x, y) => rarity_tags.indexOf(x[2].rarity) - rarity_tags.indexOf(y[2].rarity))
-		.sort((x, y) => x[2].cost - y[2].cost);
+		.sort((x, y) => rarity_tags.indexOf(x[0].rarity) - rarity_tags.indexOf(y[0].rarity))
+		.sort((x, y) => x[0].cost - y[0].cost);
 	return { deckstring, name, lang, row, deck_cards };
 }
