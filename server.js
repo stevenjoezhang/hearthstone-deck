@@ -28,26 +28,33 @@ const core = require("./core");
 
 const express = require("express");
 const app = express();
+const nunjucks = require("nunjucks");
 const path = require("path");
 
-var port = process.env.PORT || 8080;
+// https://github.com/EssenceOfChaos/express-nunjucks
+app.set("view engine", "njk");
+nunjucks.configure("templates", {
+	autoescape: false,
+	express: app,
+	watch: true
+});
 
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
 	let code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
 		name = req.query.name || "炉石传说卡组",
 		lang = req.query.lang || "zhCN";
-	let ans = core(cards, code.replace(/\s/g, "+"), name, lang);
-	res.end(ans.toString());
+	let data = core(cards, code.replace(/\s/g, "+"), name, lang);
+	if (typeof data === "string") {
+		res.render("error", { error: data });
+	}
+	res.render("layout", data);
 });
 
 const http = require("http");
 const server = http.createServer(app);
+
+var port = process.env.PORT || 8080;
 server.listen(port, () => {
 	console.log("Server listening at port %d", port);
-});
-
-process.on("uncaughtException", (error) => {
-	if (config.debug) console.error("[FATAL ERROR] " + error);
-	//process.exit(); //不强制退出可能产生不可控问题
 });

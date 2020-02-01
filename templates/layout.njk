@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, viewport-fit=cover">
+<title>{{ name }}</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HubSpot/pace/themes/black/pace-theme-center-circle.css">
+<script src="https://cdn.jsdelivr.net/gh/HubSpot/pace/pace.min.js"></script>
+</head>
+<body>
+<section class="section-decklist">
+	<div class="hs-decklist-container">
+		<div class="hs-decklist-hero">
+			<div class="hs-decklist-hero-frame">
+				<img src="img/CustomDeck_phone-Recovered.png" class="hero-frame">
+				<img src="https://art.hearthstonejson.com/v1/512x/{{ row.id }}.jpg" class="hero-image">
+			</div>
+			<div class="hs-decklist-title">
+				<input id="deck-title-input" data-deckcode="{{ deckstring }}" type="text" value="{{ name }}" maxlength="30">
+			</div>
+		</div>
+		<ul class="hs-decklist">
+			{% for card in deck_cards_ordered %}
+			<li class="deck-entry deck-entry-with{% if card[1] === 1 and card[2].rarity !== "LEGENDARY" %}out{% endif %}-amount">
+				<div class="hs-tile-img">
+					<img src="https://art.hearthstonejson.com/v1/tiles/{{ card[2].id }}.png">
+				</div>
+				<div class="hs-tile-shade"></div>
+				<div class="hs-tile-borders"></div>
+				<div class="hs-tile-mana"></div>
+				<div class="hs-tile-info">
+					<span class="hs-tile-info-left">{{ card[2].cost }}</span>
+					<span class="hs-tile-info-middle">
+						<span>{{ card[2].name[lang] }}</span>
+					</span>
+					<span class="hs-tile-info-right">
+						{% if card[1] === 1 and card[2].rarity === "LEGENDARY" %}
+							<img src="img/star.png">
+						{% elif card[1] !== 1 %}
+							{{ card[1] }}
+						{% endif %}
+					</span>
+				</div>
+				<div class="preview-card">
+					<img src="https://art.hearthstonejson.com/v1/render/latest/{{ lang }}/512x/{{ card[2].id }}.png">
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+<script src="js/deck.js"></script>
+</body>
+</html>

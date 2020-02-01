@@ -68,99 +68,10 @@ function parse_deck(data) {
 	}
 	return { cards, heroes, format };
 }
-function build_content(deck_cards_ordered, lang) {
-	let content = "";
-	for (let card of deck_cards_ordered) {
-		content += `<li class="deck-entry deck-entry-with${ (card[1] === 1 && card[2].rarity !== "LEGENDARY") ? "out" : "" }-amount">
-				<div class="hs-tile-img">
-					<img src="https://art.hearthstonejson.com/v1/tiles/${card[2].id}.png">
-				</div>
-				<div class="hs-tile-shade"></div>
-				<div class="hs-tile-borders"></div>
-				<div class="hs-tile-mana"></div>
-				<div class="hs-tile-info">
-					<span class="hs-tile-info-left">${card[2].cost}</span>
-					<span class="hs-tile-info-middle">
-						<span>${card[2].name[lang]}</span>
-					</span>
-					<span class="hs-tile-info-right">
-					${
-						(function() {
-							if (card[1] === 1 && card[2].rarity === "LEGENDARY") {
-								return `<img src="img/star.png">`;
-							}
-							if (card[1] !== 1) {
-								return card[1];
-							}
-							return ""
-						})()
-					}
-					</span>
-				</div>
-				<div class="preview-card">
-					${
-						(function() {
-							if (lang === "zhCN") {
-								let purify_name = card[2].name.enUS.replace(/\s|'|,|!|:|-/g, "");
-								//return `<img src="http://hearthstone.nos.netease.com/1/hscards/${card[2].cardClass}__${card[2].id}_zhCN_${purify_name}.png">`;
-							}
-							return `<img src="https://art.hearthstonejson.com/v1/render/latest/${lang}/512x/${card[2].id}.png">`;
-						})()
-					}
-				</div>
-			</li>`;
-	}
-	return content;
-}
-function build_html(deckstring, name, lang, row, deck_cards_ordered) {
-	let content = build_content(deck_cards_ordered, lang);
-	return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, viewport-fit=cover">
-<title>${name}</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HubSpot/pace/themes/black/pace-theme-center-circle.css">
-<script src="https://cdn.jsdelivr.net/gh/HubSpot/pace/pace.min.js"></script>
-</head>
-<body>
-<section class="section-decklist">
-	<div class="hs-decklist-container">
-		<div class="hs-decklist-hero">
-			<div class="hs-decklist-hero-frame">
-				<img src="img/CustomDeck_phone-Recovered.png" class="hero-frame">
-				<img src="https://art.hearthstonejson.com/v1/512x/${row.id}.jpg" class="hero-image">
-			</div>
-			<div class="hs-decklist-title">
-				<input id="deck-title-input" data-deckcode="${deckstring}" type="text" value="${name}" maxlength="30">
-			</div>
-		</div>
-		<ul class="hs-decklist">
-			${content}
-		</ul>
-	</div>
-</section>
-<script src="js/deck.js"></script>
-</body>
-</html>`;
-}
 module.exports = function(db, deckstring, name, lang) {
 	let deck = parse_deck(parse_deckstring(deckstring));
 	if (typeof deck === "string") {
-		return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, viewport-fit=cover">
-<title>Error!</title>
-</head>
-<body>
-<h1>Error!</h1>
-<p>${deck}</p>
-</body>
-</html>`;
+		return deck;
 	}
 	let max_cost = 0;
 	for (let card of deck.cards) {
@@ -184,5 +95,5 @@ module.exports = function(db, deckstring, name, lang) {
 		}
 	}
 	deck.cards = deck_cards_ordered;
-	return build_html(deckstring, name, lang, row, deck_cards_ordered);
+	return { deckstring, name, lang, row, deck_cards_ordered };
 }
