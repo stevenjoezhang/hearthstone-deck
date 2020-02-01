@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<ul class="hs-decklist">
-			{% for card in deck_cards_ordered %}
+			{% for card in deck_cards %}
 			<li class="deck-entry deck-entry-with{% if card[1] === 1 and card[2].rarity !== "LEGENDARY" %}out{% endif %}-amount">
 				<div class="hs-tile-img">
 					<img src="https://art.hearthstonejson.com/v1/tiles/{{ card[2].id }}.png">

@@ -70,30 +70,20 @@ function parse_deck(data) {
 }
 module.exports = function(db, deckstring, name, lang) {
 	let deck = parse_deck(parse_deckstring(deckstring));
+	let deck_cards = [];
+	let row;
 	if (typeof deck === "string") {
 		return deck;
 	}
-	let max_cost = 0;
 	for (let card of deck.cards) {
 		let dbfId = card[0];
-		let row = db[dbfId];
-		card.push(row);
-		if (row.cost > max_cost) {
-			max_cost = row.cost;
-		}
+		row = db[dbfId];
+		deck_cards.push([...card, row]);
 	}
 	row = db[deck.heroes[0]];
-	let deck_cards_ordered = [];
 	let rarity_tags = ["FREE", "COMMON", "RARE", "EPIC", "LEGENDARY"];
-	for (let i = 0; i <= max_cost; i++) {
-		for (let t of rarity_tags) {
-			for (let x of deck.cards) {
-				if (x[2].cost === i && x[2].rarity === t) {
-					deck_cards_ordered.push(x);
-				}
-			}
-		}
-	}
-	deck.cards = deck_cards_ordered;
-	return { deckstring, name, lang, row, deck_cards_ordered };
+	deck_cards
+		.sort((x, y) => rarity_tags.indexOf(x[2].rarity) - rarity_tags.indexOf(y[2].rarity))
+		.sort((x, y) => x[2].cost - y[2].cost);
+	return { deckstring, name, lang, row, deck_cards };
 }

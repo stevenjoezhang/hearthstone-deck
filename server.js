@@ -47,8 +47,9 @@ app.get("/", (req, res) => {
 	let data = core(cards, code.replace(/\s/g, "+"), name, lang);
 	if (typeof data === "string") {
 		res.render("error", { error: data });
+	} else {
+		res.render("layout", data);
 	}
-	res.render("layout", data);
 });
 
 const http = require("http");
