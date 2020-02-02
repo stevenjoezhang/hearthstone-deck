@@ -41,6 +41,98 @@ https://api.hearthstonejson.com/v1/35057/all/cards.collectible.json
 
 本项目受到了 [mashirozx/Awesome-Deck](https://github.com/mashirozx/Awesome-Deck) 的启发。
 
+## TODO
+
+提供更多的卡牌图片 API 选项。
+
+### 网易
+
+#### 旧 API
+
+```js
+let purify_name = card.name.enUS.replace(/\s|'|,|!|:|-/g, "");
+return `http://hearthstone.nos.netease.com/1/hscards/${card.cardClass}__${card.id}_zhCN_${purify_name}.png`;
+```
+
+#### 新 API
+
+https://hs.blizzard.cn/gameguide/cards/?cardset=the-boomsday-project
+https://hs.blizzard.cn/js/minisite/58beac0d.classCards.js
+
+```js
+var versionsDatajson = {
+	"the-boomsday-project": {
+		"title": "“砰砰计划”扩展包卡牌预览",
+		"buyHref": "https://shop.battlenet.com.cn/zh-cn/product/hearthstone-boomsday-project-cn",
+		"buyBtnTxt": "立即购买",
+		"shareTxt": "《炉石传说》最新扩展包“女巫森林”现已公布。",
+		"sharePic": "https://hearthstone.nosdn.127.net/3/minisite/wd3rrew/share.jpg",
+		"logo": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/cards/the-boomsday-project-logo.png"
+	},
+	"rastakhans-rumble": {
+		"title": "拉斯塔哈的大乱斗",
+		"buyHref": "https://shop.battlenet.com.cn/zh-cn/product/hearthstone-rastakhans-rumble",
+		"buyBtnTxt": "立即购买",
+		"shareTxt": "《炉石传说》全新扩展包“拉斯塔哈的大乱斗”现已公布，预购50包卡包赠送萨满新英雄！",
+		"sharePic": "https://blz.nosdn.127.net/1/tm/hearthstone/activities/rastakhans/share.jpg",
+		"logo": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/cards/rastakhans-rumble-logo.png"
+	},
+	"rise-of-shadows": {
+		"title": "暗影崛起",
+		"buyHref": "https://shop.battlenet.com.cn/zh-cn/product/hearthstone-rise-of-shadows",
+		"buyBtnTxt": "立即购买",
+		"shareTxt": "《炉石传说》最新扩展包“暗影崛起”现已公布，预购也已同步开启",
+		"sharePic": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/rise/share.jpg",
+		"logo": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/cards/rise-of-shadows-logo.png"
+	},
+	"saviors-of-uldum": {
+		"title": "奥丹姆奇兵",
+		"buyHref": "https://shop.battlenet.com.cn/zh-cn/product/hearthstone-saviors-of-uldum",
+		"buyBtnTxt": "立即购买",
+		"shareTxt": "《炉石传说》最新扩展包“奥丹姆奇兵”现已公布。预购超级合集即可获得德鲁伊新英雄“伊莉斯·逐星”。",
+		"sharePic": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/saviors-of-uldum/share.jpg",
+		"logo": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/cards/saviors-of-uldum-logo.png"
+	},
+	"descent-of-dragons": {
+		"title": "巨龙降临",
+		"buyHref": "https://shop.battlenet.com.cn/zh-cn/product/hearthstone-descent-of-dragons",
+		"buyBtnTxt": "立即购买",
+		"shareTxt": "《炉石传说》最新扩展包“巨龙降临”现已上线，登录即可免费获得大量福利。",
+		"sharePic": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/descent-of-dragons/share.jpg",
+		"logo": "https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/descent-of-dragons/logo.png"
+	}
+};
+$.post("https://hs.blizzard.cn/action/gameguide/cards", {
+	cardSet: "saviors-of-uldum",
+	cardClass: "",
+	t: Date().now()
+}, json => {
+	if (json.status === "success") {
+		console.log(json.data);
+	}
+});
+```
+
+### RapidAPI
+
+https://rapidapi.com/omgvamp/api/hearthstone?endpoint=5525c4eee4b0b0dce8949cac
+
+```js
+fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/Ysera?locale=zhCN", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "omgvamp-hearthstone-v1.p.rapidapi.com",
+		"x-rapidapi-key": "bb9e83cdfemsh39788a29ababa6dp1edc8ajsnbdfe142ae585"
+	}
+})
+.then(response => {
+	return response.json();
+})
+.then(card => {
+	console.log(card);
+});
+```
+
 ## License
 
 Released under the GNU General Public License v3  
