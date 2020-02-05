@@ -1,31 +1,30 @@
 body {
 	background-attachment: fixed;
-	background-image: url("../img/TheBox_Table.png");
+	background-image: url(/img/TheBox_Table.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	cursor: url(../img/EyeHalf.png), auto;
+	cursor: url(/img/EyeHalf.png), auto;
 	margin: 0;
 	background-color: #fff;
+	display: flex;
 }
 .deck-entry:hover {
-	cursor: url(../img/EyeOpen.png), auto;
+	cursor: url(/img/EyeOpen.png), auto;
 }
 body:active, .deck-entry:active {
-	cursor: url(../img/EyeClosed.png), auto;
+	cursor: url(/img/EyeClosed.png), auto;
 }
 .section-decklist {
 	background-repeat: no-repeat;
 	background-size: 900px 100%;
-	background-image: url(../img/bg_standard.png);
+	background-image: url(/img/bg_standard.png);
 	height: 700px;
 	width: 900px;
 	transform-origin: top left;
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
 	overflow: scroll;
-	margin: 40px 0px;
+	margin: 40px auto;
 	border-radius: 20px;
 	box-shadow: 0 0 15px 5px rgba(255, 255, 255, .3) inset;
 }
@@ -115,7 +114,7 @@ input:invalid {
 	height: 26px;
 }
 .hs-tile-shade {
-	background-image: url("../img/tile_shade.png");
+	background-image: url(/img/tile_shade.png);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	width: 165px;
@@ -133,7 +132,7 @@ input:invalid {
 	line-height: 0;
 }
 .hs-tile-mana {
-	background-image: url("../img/tile_mana.png");
+	background-image: url(/img/tile_mana.png);
 	background-size: 100% 100%;
 	position: absolute;
 	left: -5px;
@@ -214,7 +213,7 @@ input:invalid {
 	left: 22px;
 }
 .deck-entry-with-amount .hs-tile-borders {
-	background-image: url("../img/tile_container_number.png");
+	background-image: url(/img/tile_container_number.png);
 }
 .deck-entry-with-amount .hs-tile-info-middle {
 	max-width: 170px;
@@ -230,7 +229,7 @@ input:invalid {
 	left: 30px;
 }
 .deck-entry-without-amount .hs-tile-borders {
-	background-image: url("../img/tile_container_open.png");
+	background-image: url(/img/tile_container_open.png);
 }
 .deck-entry-without-amount .hs-tile-info-middle {
 	max-width: 190px;
@@ -253,6 +252,9 @@ input:invalid {
 	}
 }
 @media (max-width: 599px) {
+	.hs-decklist-container {
+		margin: auto;
+	}
 	.hs-decklist-hero {
 		margin: 0px;
 	}
