@@ -4,41 +4,33 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	cursor: url(/img/EyeHalf.png), auto;
 	margin: 0;
 	background-color: #fff;
-	display: flex;
 }
 .deck-entry:hover {
 	cursor: url(/img/EyeOpen.png), auto;
 }
-body:active, .deck-entry:active {
+.section-decklist:active, .deck-entry:active {
 	cursor: url(/img/EyeClosed.png), auto;
 }
 .section-decklist {
-	background-repeat: no-repeat;
-	background-size: 900px 100%;
-	background-image: url(/img/bg_standard.png);
-	height: 700px;
-	width: 900px;
-	transform-origin: top left;
-	position: relative;
-	overflow: scroll;
-	margin: 40px auto;
-	border-radius: 20px;
-	box-shadow: 0 0 15px 5px rgba(255, 255, 255, .3) inset;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	cursor: url(/img/EyeHalf.png), auto;
+	display: flex;
 }
 .hs-decklist-container {
-	margin-left: 260px;
-	padding: 40px 70px;
-	width: 241px;
+	margin: auto;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 .hs-decklist-hero {
-	padding: 0;
-	height: 97px;
-	width: 243px;
-	margin: 0 -250px;
-	position: absolute;
+	position: relative;
 }
 .hs-decklist-hero-frame {
 	height: 101px;
@@ -191,16 +183,11 @@ input:invalid {
 }
 .preview-card {
 	display: none;
-	width: 0;
-	height: 0;
-	margin: 0;
-	padding: 0;
 	pointer-events: none;
 	overflow: visible;
 	z-index: 400;
-	left: 70px;
-	top: 150px;
-	position: fixed;
+	left: -100%;
+	position: absolute;
 }
 .preview-card img {
 	width: 250px;
@@ -240,29 +227,16 @@ input:invalid {
 
 @media (min-width: 960px) {
 }
-@media (min-width: 600px) and (max-width: 959px) {
-	.hs-decklist-container {
-		margin-left: 40%;
-	}
+@media (max-width: 959px) {
 	.hs-decklist {
 		width: 250px;
-	}
-	.preview-card {
-		left: 170px;
 	}
 }
 @media (max-width: 599px) {
-	.hs-decklist-container {
-		margin: auto;
-	}
 	.hs-decklist-hero {
-		margin: 0px;
-	}
-	.hs-decklist {
-		width: 250px;
-		margin-top: 105px;
+		margin-bottom: 5px;
 	}
 	.preview-card {
-		opacity: 0;
+		visibility: hidden;
 	}
 }
