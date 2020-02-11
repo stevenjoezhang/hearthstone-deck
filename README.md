@@ -14,13 +14,14 @@ cd hsdeck
 npm install
 ```
 
-依赖安装完成后，执行 `npm start`，然后通过浏览器访问 `localhost:8080` 即可查看效果。可以接受三个 GET 参数：
+依赖安装完成后，执行 `npm start`，然后通过浏览器访问 `localhost:8080` 即可查看效果。支持以下 GET 参数：
 
-| 参数 | 含义 |
-| - | - |
-| `code` | Base64编码的卡组代码 |
-| `name` | 卡组名称 |
-| `lang` | 卡牌语言 |
+| 参数 | 含义 | 典型有效值 |
+| - | - | - |
+| `code` | 卡组代码 | Base64 编码的 String |
+| `name` | 卡组名称 | `炉石传说卡组` |
+| `lang` | 卡牌语言 | `zhCN` |
+| `lazy` | 是否懒加载卡牌图片 | `lazy`, `eager`, `auto` |
 
 ## 更新
 
