@@ -32,6 +32,7 @@ body {
 .hs-decklist-hero {
 	position: relative;
 	margin-right: 10px;
+	margin-bottom: 5px;
 }
 .hs-decklist-hero-frame {
 	height: 101px;
@@ -202,17 +203,12 @@ input:invalid {
 	width: 190px;
 }
 
-@media (min-width: 960px) {
-}
-@media (max-width: 959px) {
+@media (max-width: 800px) {
 	.hs-decklist {
 		width: 250px;
 	}
 }
-@media (max-width: 599px) {
-	.hs-decklist-hero {
-		margin-bottom: 5px;
-	}
+@media (max-width: 500px) {
 	.preview-card {
 		visibility: hidden;
 	}

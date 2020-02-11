@@ -45,12 +45,13 @@ app.get("/", (req, res) => {
 		name = req.query.name || "炉石传说卡组",
 		lang = req.query.lang || "zhCN",
 		lazy = req.query.lazy || "auto";
-	let data = core(cards, code.replace(/\s/g, "+"));
+	let deckstring = code.replace(/\s/g, "+");
+	let data = core(cards, deckstring);
 	if (typeof data === "string") {
-		res.render("error", { error: data });
+		res.render("error", { data });
 	} else {
 		res.render("layout", Object.assign({
-			name, lang, lazy
+			deckstring, name, lang, lazy
 		}, data));
 	}
 });

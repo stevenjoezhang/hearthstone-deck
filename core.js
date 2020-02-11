@@ -70,20 +70,30 @@ function parse_deck(data) {
 }
 module.exports = function(db, deckstring) {
 	let deck = parse_deck(parse_deckstring(deckstring));
-	let deck_cards = [];
-	let row;
 	if (typeof deck === "string") {
 		return deck;
 	}
-	for (let card of deck.cards) {
+	let hero = db[deck.heroes[0]];
+	let rarity = {
+		"FREE": [0, 0, 0],
+		"COMMON": [1, 40, 400],
+		"RARE": [2, 100, 800],
+		"EPIC": [3, 400, 1600],
+		"LEGENDARY": [4, 1600, 3200]
+	};
+	let dust = {
+		common: 0,
+		golden: 0
+	};
+	let deck_cards = deck.cards.map(card => {
 		let [dbfId, count] = card;
-		row = db[dbfId];
-		deck_cards.push([row, count]);
-	}
-	row = db[deck.heroes[0]];
-	let rarity_tags = ["FREE", "COMMON", "RARE", "EPIC", "LEGENDARY"];
+		card = db[dbfId];
+		dust.common += count * rarity[card.rarity][1];
+		dust.golden += count * rarity[card.rarity][2];
+		return [card, count];
+	});
 	deck_cards
-		.sort((x, y) => rarity_tags.indexOf(x[0].rarity) - rarity_tags.indexOf(y[0].rarity))
+		.sort((x, y) => rarity[x[0].rarity][0] - rarity[y[0].rarity][0])
 		.sort((x, y) => x[0].cost - y[0].cost);
-	return { deckstring, row, deck_cards };
+	return { hero, dust, deck_cards };
 }
