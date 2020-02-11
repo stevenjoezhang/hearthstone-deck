@@ -7,10 +7,10 @@ body {
 	margin: 0;
 	background-color: #fff;
 }
-.deck-entry:hover {
+.hs-decklist:hover {
 	cursor: url(/img/EyeOpen.png), auto;
 }
-.section-decklist:active, .deck-entry:active {
+.section-decklist:active, .hs-decklist:active {
 	cursor: url(/img/EyeClosed.png), auto;
 }
 .section-decklist {
@@ -31,14 +31,12 @@ body {
 }
 .hs-decklist-hero {
 	position: relative;
+	margin-right: 10px;
 }
 .hs-decklist-hero-frame {
 	height: 101px;
 	width: 256px;
 	overflow: hidden;
-	transform-origin: top left;
-	transform: scale(0.95, 1);
-	border-radius: 2px;
 	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
 }
 .hero-frame {
@@ -51,7 +49,7 @@ body {
 }
 .hs-decklist-title {
 	position: absolute;
-	bottom: 1em;
+	bottom: 20px;
 	left: 29px;
 	width: 191px;
 }
@@ -74,20 +72,12 @@ input:invalid {
 	box-shadow: none;
 }
 .hs-decklist {
-	font-size: 1rem;
-	font-weight: 400;
-	letter-spacing: 0.04em;
-	color: rgba(0, 0, 0, 0.87);
-	line-height: 1.5rem;
 	padding: 0px;
 	margin: 0px;
 	width: 500px;
-	display: inline-block;
 }
 .deck-entry {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+	display: block;
 	height: 39px;
 	width: 239px;
 	position: relative;
@@ -99,7 +89,6 @@ input:invalid {
 .hs-tile-img {
 	position: absolute;
 	top: 7px;
-	line-height: 0;
 }
 .hs-tile-img img {
 	position: absolute;
@@ -113,22 +102,17 @@ input:invalid {
 	height: 28px;
 	position: absolute;
 	top: 6px;
-	line-height: 0;
 }
 .hs-tile-borders {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	top: 0;
-	left: 0;
-	line-height: 0;
 }
 .hs-tile-mana {
 	background-image: url(/img/tile_mana.png);
 	background-size: 100% 100%;
 	position: absolute;
 	left: -5px;
-	top: 0;
 	width: 43px;
 	height: 39px;
 }
@@ -136,41 +120,32 @@ input:invalid {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 0;
-	left: 0;
+	color: #fff;
 }
 .hs-tile-info > span {
 	position: absolute;
 }
 .hs-tile-info-left {
-	margin-left: 0;
-	margin-right: 16px;
-	border-radius: 50%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
 	width: 34px;
 	height: 100%;
 	font-size: 1.25em;
 }
 .hs-tile-info-middle {
-	display: inline-flex;
-	flex-direction: column;
 	left: 39px;
-	bottom: 7.5px;
-	color: #fff;
-	letter-spacing: 0.4px;
+	bottom: 6.5px;
+	letter-spacing: 0px;
 	font-size: 1.2em;
 }
 .hs-tile-info-middle span {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	display: block;
 }
 .hs-tile-info-right {
-	margin-right: 16px;
-	top: 0;
 	right: 5px;
 	font-size: 1.2em;
 	color: #e5b544;
@@ -179,14 +154,12 @@ input:invalid {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	margin: 0;
 }
 .deck-entry:hover .preview-card img {
 	display: block;
 }
 .preview-card {
 	pointer-events: none;
-	overflow: visible;
 	z-index: 400;
 	left: -100%;
 	position: absolute;
@@ -194,6 +167,7 @@ input:invalid {
 .preview-card img {
 	display: none;
 	width: 250px;
+	transform: translateY(-50%);
 }
 
 .deck-entry-with-amount .hs-tile-img {
@@ -213,7 +187,7 @@ input:invalid {
 }
 
 .deck-entry-without-amount .hs-tile-img {
-	right: 125px;
+	right: 124px;
 }
 .deck-entry-without-amount .hs-tile-shade {
 	left: 30px;
