@@ -68,7 +68,7 @@ function parse_deck(data) {
 	}
 	return { cards, heroes, format };
 }
-module.exports = function(db, deckstring, name, lang) {
+module.exports = function(db, deckstring) {
 	let deck = parse_deck(parse_deckstring(deckstring));
 	let deck_cards = [];
 	let row;
@@ -85,5 +85,5 @@ module.exports = function(db, deckstring, name, lang) {
 	deck_cards
 		.sort((x, y) => rarity_tags.indexOf(x[0].rarity) - rarity_tags.indexOf(y[0].rarity))
 		.sort((x, y) => x[0].cost - y[0].cost);
-	return { deckstring, name, lang, row, deck_cards };
+	return { deckstring, row, deck_cards };
 }

@@ -43,12 +43,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
 	let code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
 		name = req.query.name || "炉石传说卡组",
-		lang = req.query.lang || "zhCN";
-	let data = core(cards, code.replace(/\s/g, "+"), name, lang);
+		lang = req.query.lang || "zhCN",
+		lazy = req.query.lazy || "auto";
+	let data = core(cards, code.replace(/\s/g, "+"));
 	if (typeof data === "string") {
 		res.render("error", { error: data });
 	} else {
-		res.render("layout", data);
+		res.render("layout", Object.assign({
+			name, lang, lazy
+		}, data));
 	}
 });
 
