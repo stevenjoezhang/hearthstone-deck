@@ -181,8 +181,10 @@ input:invalid {
 	justify-content: center;
 	margin: 0;
 }
+.deck-entry:hover .preview-card img {
+	display: block;
+}
 .preview-card {
-	display: none;
 	pointer-events: none;
 	overflow: visible;
 	z-index: 400;
@@ -190,6 +192,7 @@ input:invalid {
 	position: absolute;
 }
 .preview-card img {
+	display: none;
 	width: 250px;
 }
 

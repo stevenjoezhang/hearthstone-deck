@@ -51,6 +51,14 @@
 		</ul>
 	</div>
 </section>
-<script src="/js/deck.js"></script>
+<script>
+var deckTitleInputEl = document.getElementById("deck-title-input");
+deckTitleInputEl.addEventListener("change", event => {
+	let newTitle = event.target.value;
+	let deckTitle = encodeURIComponent((newTitle || "").trim());
+	let deckCode = deckTitleInputEl.dataset.deckcode;
+	window.location.href = `/?name=${deckTitle}&code=${deckCode}`;
+}, false);
+</script>
 </body>
 </html>
