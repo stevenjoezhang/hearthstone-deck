@@ -18,7 +18,13 @@
 				<img src="https://art.hearthstonejson.com/v1/256x/{{ hero.id }}.jpg" class="hero-image">
 			</div>
 			<div class="hs-decklist-title">
-				<input id="deck-title-input" data-deckcode="{{ deckstring }}" type="text" value="{{ name }}" maxlength="30">
+				<input id="deck-title-input" data-deckcode="{{ deckstring }}" type="text" value="{{ name }}" maxlength="20">
+			</div>
+			<div class="hs-arcane-dust">
+				<img src="/img/DustJar_Icon.png">
+				<span>{{ dust.common }}</span>
+				<img src="/img/DustJar_Icon.png">
+				<span class="hs-golden">{{ dust.golden }}</span>
 			</div>
 		</div>
 		<ul class="hs-decklist">
@@ -35,7 +41,7 @@
 					<span class="hs-tile-info-middle">
 						<span>{{ card.name[lang] }}</span>
 					</span>
-					<span class="hs-tile-info-right">
+					<span class="hs-tile-info-right hs-golden">
 						{% if count === 1 and card.rarity === "LEGENDARY" %}
 							<img src="/img/star.png">
 						{% elif count !== 1 %}

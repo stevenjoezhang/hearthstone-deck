@@ -6,6 +6,7 @@ body {
 	background-position: center;
 	margin: 0;
 	background-color: #fff;
+	font-family: "hs-bold", "GLEI00M_t", FZLiBian, monospace, sans-serif;
 }
 .hs-decklist:hover {
 	cursor: url(/img/EyeOpen.png), auto;
@@ -28,6 +29,7 @@ body {
 	align-items: flex-start;
 	flex-wrap: wrap;
 	justify-content: center;
+	color: #fff;
 }
 .hs-decklist-hero {
 	position: relative;
@@ -56,11 +58,9 @@ body {
 }
 input {
 	padding: 0;
-	margin: 0;
 	width: 100%;
 	font-family: "hs-bold", "GLEI00M_t", FZLiBian, monospace, sans-serif;
 	font-weight: bold;
-	letter-spacing: 0.4px;
 	color: #fff;
 	font-size: 1.5em;
 	border: none;
@@ -72,19 +72,32 @@ input:focus {
 input:invalid {
 	box-shadow: none;
 }
+.hs-arcane-dust {
+	position: absolute;
+	display: flex;
+	margin-top: 10px;
+}
+.hs-arcane-dust img, .hs-arcane-dust span {
+	font-size: 2em;
+	height: 1em;
+	line-height: 1;
+}
+.hs-golden {
+	color: #e5b544;
+}
 .hs-decklist {
 	padding: 0px;
 	margin: 0px;
-	width: 500px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1px 6px;
 }
 .deck-entry {
 	display: block;
 	height: 39px;
 	width: 239px;
 	position: relative;
-	font-family: "hs-bold", "GLEI00M_t", FZLiBian, monospace, sans-serif;
 	margin: 1px;
-	float: left;
 	padding-right: 6px;
 }
 .hs-tile-img {
@@ -121,23 +134,23 @@ input:invalid {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	color: #fff;
 }
 .hs-tile-info > span {
 	position: absolute;
 }
-.hs-tile-info-left {
+.hs-tile-info-left, .hs-tile-info-right {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 34px;
 	height: 100%;
-	font-size: 1.25em;
+	font-size: 1.4em;
+}
+.hs-tile-info-left {
+	width: 34px;
 }
 .hs-tile-info-middle {
 	left: 39px;
 	bottom: 6.5px;
-	letter-spacing: 0px;
 	font-size: 1.2em;
 }
 .hs-tile-info-middle span {
@@ -148,13 +161,7 @@ input:invalid {
 }
 .hs-tile-info-right {
 	right: 5px;
-	font-size: 1.2em;
-	color: #e5b544;
 	width: 30px;
-	height: 100%;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
 }
 .deck-entry:hover .preview-card img {
 	display: block;
@@ -205,11 +212,11 @@ input:invalid {
 
 @media (max-width: 800px) {
 	.hs-decklist {
-		width: 250px;
+		grid-template-columns: 1fr;
 	}
 }
 @media (max-width: 500px) {
-	.preview-card {
+	.hs-arcane-dust, .preview-card {
 		visibility: hidden;
 	}
 }
