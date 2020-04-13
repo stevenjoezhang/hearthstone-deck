@@ -4,7 +4,6 @@
 	"description": "Hearthstone Deck Parser.",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js",
 		"postinstall": "node update.js"
 	},
 	"repository": {
