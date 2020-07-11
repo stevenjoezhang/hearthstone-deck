@@ -30,6 +30,8 @@ const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
 const path = require("path");
+const os = require("os");
+const chalk = require("chalk");
 
 // https://github.com/EssenceOfChaos/express-nunjucks
 app.set("view engine", "njk");
@@ -59,7 +61,16 @@ app.get("/", (req, res) => {
 const http = require("http");
 const server = http.createServer(app);
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 server.listen(port, () => {
-	console.log("Server listening at port %d", port);
+	console.log(chalk.yellow("Server available on:"));
+	const ifaces = os.networkInterfaces();
+	Object.keys(ifaces).forEach(dev => {
+		ifaces[dev].forEach(details => {
+			if (details.family === 'IPv4') {
+				console.log((`  http://${details.address}:${chalk.green(port.toString())}`));
+			}
+		});
+	});
+	console.log("Hit CTRL-C to stop the server");
 });
