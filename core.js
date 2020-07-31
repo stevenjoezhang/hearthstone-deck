@@ -17,9 +17,9 @@
  */
 
 function parse_deckstring(deckstring) {
-	let binary = Buffer.from(deckstring, "base64");
-	let hex = binary.toString("hex");
-	let arr = hex.match(/.{1,2}/g);
+	const binary = Buffer.from(deckstring, "base64");
+	const hex = binary.toString("hex");
+	const arr = hex.match(/.{1,2}/g);
 	return arr.map(x => parseInt(x, 16));
 }
 function read_varint(data) {
@@ -35,58 +35,58 @@ function read_varint(data) {
 	return result;
 }
 function parse_deck(data) {
-	let reserve = read_varint(data);
+	const reserve = read_varint(data);
 	if (reserve !== 0) {
 		return "Invalid deckstring";
 	}
-	let version = read_varint(data);
+	const version = read_varint(data);
 	if (version !== 1) {
 		return "Unsupported deckstring version " + version;
 	}
-	let format = read_varint(data);
-	let heroes = [];
-	let num_heroes = read_varint(data);
+	const format = read_varint(data);
+	const heroes = [];
+	const num_heroes = read_varint(data);
 	for (let i = 0; i < num_heroes; i++) {
 		heroes.push(read_varint(data));
 	}
-	let cards = [];
-	let num_cards_x1 = read_varint(data);
+	const cards = [];
+	const num_cards_x1 = read_varint(data);
 	for (let i = 0; i < num_cards_x1; i++) {
-		card_id = read_varint(data);
+		const card_id = read_varint(data);
 		cards.push([card_id, 1]);
 	}
-	let num_cards_x2 = read_varint(data);
+	const num_cards_x2 = read_varint(data);
 	for (let i = 0; i < num_cards_x2; i++) {
-		card_id = read_varint(data);
+		const card_id = read_varint(data);
 		cards.push([card_id, 2]);
 	}
-	let num_cards_xn = read_varint(data);
+	const num_cards_xn = read_varint(data);
 	for (let i = 0; i < num_cards_xn; i++) {
-		let card_id = read_varint(data);
-		let count = read_varint(data);
+		const card_id = read_varint(data);
+		const count = read_varint(data);
 		cards.push([card_id, count]);
 	}
 	return { cards, heroes, format };
 }
 module.exports = function(db, deckstring) {
-	let deck = parse_deck(parse_deckstring(deckstring));
+	const deck = parse_deck(parse_deckstring(deckstring));
 	if (typeof deck === "string") {
 		return deck;
 	}
-	let hero = db[deck.heroes[0]];
-	let rarity = {
+	const hero = db[deck.heroes[0]];
+	const rarity = {
 		"FREE": [0, 0, 0],
 		"COMMON": [1, 40, 400],
 		"RARE": [2, 100, 800],
 		"EPIC": [3, 400, 1600],
 		"LEGENDARY": [4, 1600, 3200]
 	};
-	let dust = {
+	const dust = {
 		common: 0,
 		golden: 0
 	};
-	let deck_cards = deck.cards.map(card => {
-		let [dbfId, count] = card;
+	const deck_cards = deck.cards.map(card => {
+		const [dbfId, count] = card;
 		card = db[dbfId];
 		dust.common += count * rarity[card.rarity][1];
 		dust.golden += count * rarity[card.rarity][2];

@@ -56,11 +56,11 @@
 	</div>
 </section>
 <script>
-var deckTitleInputEl = document.getElementById("deck-title-input");
+const deckTitleInputEl = document.getElementById("deck-title-input");
 deckTitleInputEl.addEventListener("change", event => {
-	let newTitle = event.target.value;
-	let deckTitle = encodeURIComponent((newTitle || "").trim());
-	let deckCode = deckTitleInputEl.dataset.deckcode;
+	const newTitle = event.target.value || "";
+	const deckTitle = encodeURIComponent(newTitle.trim());
+	const deckCode = deckTitleInputEl.dataset.deckcode;
 	window.location.href = `/?name=${deckTitle}&code=${deckCode}`;
 }, false);
 </script>

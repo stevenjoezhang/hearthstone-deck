@@ -17,8 +17,8 @@
  */
 
 const cardsJSON = require("./cards.collectible.json");
-var cards = [];
-for (var card of cardsJSON) {
+const cards = [];
+for (const card of cardsJSON) {
 	if (card.dbfId) {
 		cards[card.dbfId] = card;
 	}
@@ -43,12 +43,12 @@ nunjucks.configure("templates", {
 
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
-	let code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
+	const code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
 		name = req.query.name || "炉石传说卡组",
 		lang = req.query.lang || "zhCN",
 		lazy = req.query.lazy || "auto";
-	let deckstring = code.replace(/\s/g, "+");
-	let data = core(cards, deckstring);
+	const deckstring = code.replace(/\s/g, "+");
+	const data = core(cards, deckstring);
 	if (typeof data === "string") {
 		res.render("error", { data });
 	} else {
