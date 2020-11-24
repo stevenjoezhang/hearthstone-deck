@@ -88,10 +88,11 @@ module.exports = function(db, deckstring) {
 	const deck_cards = deck.cards.map(card => {
 		const [dbfId, count] = card;
 		card = db[dbfId];
+		if (!card) return null;
 		dust.common += count * rarity[card.rarity][1];
 		dust.golden += count * rarity[card.rarity][2];
 		return [card, count];
-	});
+	}).filter(card => card);
 	deck_cards
 		.sort((x, y) => rarity[x[0].rarity][0] - rarity[y[0].rarity][0])
 		.sort((x, y) => x[0].cost - y[0].cost);

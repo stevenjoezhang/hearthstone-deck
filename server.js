@@ -26,12 +26,15 @@ for (const card of cardsJSON) {
 
 const core = require("./core");
 
-const express = require("express");
-const app = express();
-const nunjucks = require("nunjucks");
+const MiServer = require("mimi-server");
 const path = require("path");
-const os = require("os");
-const chalk = require("chalk");
+
+const { app } = new MiServer({
+	port: process.env.PORT || 8080,
+	static: path.join(__dirname, "public")
+});
+
+const nunjucks = require("nunjucks");
 
 // https://github.com/EssenceOfChaos/express-nunjucks
 app.set("view engine", "njk");
@@ -41,9 +44,8 @@ nunjucks.configure("templates", {
 	watch: true
 });
 
-app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
-	const code = req.query.code || "AAEBAf0GAA/OBpcHzAjiDP8PyBTmFrasAq6wAqW+Avi/Avm/AqLNAvjQAqbvAgA=",
+	const code = req.query.code || "AAEBAR8engGoAvYCtQPHA4cEyQTyBa4GxQjbCf4Mx64CmPACoIADp4IDm4UDoIUD9YkD5pYD+ZYDtpwDnp0D/KMD5KQDn6UDoqUDpqUDhKcDn7cDAAA=",
 		name = req.query.name || "炉石传说卡组",
 		lang = req.query.lang || "zhCN",
 		lazy = req.query.lazy || "auto";
@@ -56,21 +58,4 @@ app.get("/", (req, res) => {
 			deckstring, name, lang, lazy
 		}, data));
 	}
-});
-
-const http = require("http");
-const server = http.createServer(app);
-
-const port = process.env.PORT || 8080;
-server.listen(port, () => {
-	console.log(chalk.yellow("Server available on:"));
-	const ifaces = os.networkInterfaces();
-	Object.keys(ifaces).forEach(dev => {
-		ifaces[dev].forEach(details => {
-			if (details.family === 'IPv4') {
-				console.log((`  http://${details.address}:${chalk.green(port.toString())}`));
-			}
-		});
-	});
-	console.log("Hit CTRL-C to stop the server");
 });

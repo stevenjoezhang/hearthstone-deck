@@ -1,25 +1,25 @@
 {
-	"name": "hsdeck",
-	"version": "0.1.0",
-	"description": "Hearthstone Deck Parser.",
-	"main": "server.js",
-	"scripts": {
-		"postinstall": "node update.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/stevenjoezhang/hsdeck.git"
-	},
-	"keywords": [
-		"Hearthstone",
-		"Deck",
-		"Parser"
-	],
-	"author": "Mimi <stevenjoezhang@gmail.com> (https://zhangshuqiao.org)",
-	"license": "GPL-3.0-or-later",
-	"dependencies": {
-		"chalk": "^4.1.0",
-		"express": "^4.17.1",
-		"nunjucks": "^3.2.0"
-	}
+  "name": "hsdeck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hearthstone Deck Parser.",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "node update.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenjoezhang/hsdeck.git"
+  },
+  "keywords": [
+    "Hearthstone",
+    "Deck",
+    "Parser"
+  ],
+  "author": "Mimi <stevenjoezhang@gmail.com> (https://zhangshuqiao.org)",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "mimi-server": "^0.0.1",
+    "nunjucks": "^3.2.0"
+  }
 }
