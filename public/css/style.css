@@ -6,7 +6,7 @@ body {
 	background-position: center;
 	margin: 0;
 	background-color: #fff;
-	font-family: "hs-bold", "GLEI00M_t", FZLiBian, monospace, sans-serif;
+	font-family: "hs-bold", FZLiBian, monospace, sans-serif;
 }
 .hs-decklist:hover {
 	cursor: url(/img/EyeOpen.png), auto;
@@ -59,7 +59,7 @@ body {
 input {
 	padding: 0;
 	width: 100%;
-	font-family: "hs-bold", "GLEI00M_t", FZLiBian, monospace, sans-serif;
+	font-family: "hs-bold", FZLiBian, monospace, sans-serif;
 	font-weight: bold;
 	color: #fff;
 	font-size: 1.5em;

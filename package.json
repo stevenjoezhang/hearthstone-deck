@@ -7,10 +7,7 @@
   "scripts": {
     "postinstall": "node update.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stevenjoezhang/hsdeck.git"
-  },
+  "repository": "stevenjoezhang/hsdeck",
   "keywords": [
     "Hearthstone",
     "Deck",
