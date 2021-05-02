@@ -16,7 +16,8 @@
  *  GNU General Public License for more details.
  */
 
-const cardsJSON = require("./cards.collectible.json");
+import fs from "fs";
+const cardsJSON = JSON.parse(fs.readFileSync("./cards.collectible.json"));
 const cards = [];
 for (const card of cardsJSON) {
 	if (card.dbfId) {
@@ -24,17 +25,20 @@ for (const card of cardsJSON) {
 	}
 }
 
-const core = require("./core");
+import core from "./core.js";
 
-const MiServer = require("mimi-server");
-const path = require("path");
+import MiServer from "mimi-server";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const { app } = new MiServer({
 	port: process.env.PORT || 8080,
 	static: path.join(__dirname, "public")
 });
 
-const nunjucks = require("nunjucks");
+import nunjucks from "nunjucks";
 
 // https://github.com/EssenceOfChaos/express-nunjucks
 app.set("view engine", "njk");

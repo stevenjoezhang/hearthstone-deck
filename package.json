@@ -4,6 +4,7 @@
   "private": true,
   "description": "Hearthstone Deck Parser.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "postinstall": "node update.js"
   },

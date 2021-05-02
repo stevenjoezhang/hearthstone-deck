@@ -68,7 +68,7 @@ function parse_deck(data) {
 	}
 	return { cards, heroes, format };
 }
-module.exports = function(db, deckstring) {
+export default function(db, deckstring) {
 	const deck = parse_deck(parse_deckstring(deckstring));
 	if (typeof deck === "string") {
 		return deck;
