@@ -44,8 +44,7 @@ import nunjucks from "nunjucks";
 app.set("view engine", "njk");
 nunjucks.configure("templates", {
 	autoescape: false,
-	express: app,
-	watch: true
+	express: app
 });
 
 app.get("/", (req, res) => {
