@@ -17,7 +17,7 @@
  */
 
 import fs from "fs";
-const cardsJSON = JSON.parse(fs.readFileSync("./cards.collectible.json"));
+const cardsJSON = JSON.parse(fs.readFileSync("./cards.collectible.json", "utf-8"));
 const cards = [];
 for (const card of cardsJSON) {
 	if (card.dbfId) {
