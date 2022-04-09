@@ -18,10 +18,9 @@
 
 function parse_deckstring(deckstring) {
 	const binary = Buffer.from(deckstring, "base64");
-	const hex = binary.toString("hex");
-	const arr = hex.match(/.{1,2}/g);
-	return arr.map(x => parseInt(x, 16));
+	return Array.from(binary);
 }
+
 function read_varint(data) {
 	let shift = 0;
 	let result = 0;
@@ -34,6 +33,7 @@ function read_varint(data) {
 	while (c & 0x80);
 	return result;
 }
+
 function parse_deck(data) {
 	const reserve = read_varint(data);
 	if (reserve !== 0) {
@@ -68,6 +68,7 @@ function parse_deck(data) {
 	}
 	return { cards, heroes, format };
 }
+
 export default function(db, deckstring) {
 	const deck = parse_deck(parse_deckstring(deckstring));
 	if (typeof deck === "string") {
