@@ -17,7 +17,7 @@
   "author": "Mimi <stevenjoezhang@gmail.com> (https://zhangshuqiao.org)",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "mimi-server": "^0.0.1",
-    "nunjucks": "^3.2.0"
+    "mimi-server": "0.0.1",
+    "nunjucks": "3.2.3"
   }
 }
