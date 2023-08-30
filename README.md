@@ -7,7 +7,7 @@
 
 ```bash
 # Clone this repository
-git clone https://github.com/stevenjoezhang/hsdeck.git
+git clone https://github.com/stevenjoezhang/hearthstone-deck.git
 # Go into the repository
 cd hsdeck
 # Install dependencies
